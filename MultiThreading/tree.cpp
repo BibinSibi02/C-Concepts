@@ -1,7 +1,5 @@
 //
-// Created by Bibin Sibi
-// Red Id: 825763777
-// CS 480
+// Created by Bibin 
 
 
 #include "tree.h"
