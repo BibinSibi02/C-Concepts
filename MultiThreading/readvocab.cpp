@@ -1,6 +1,4 @@
-/* BIBIN SIBI
- * CS480
- * RED ID:825763777 */
+/* BIBIN  */
 
 #include "readvocab.h"
 #include "shared.h"
