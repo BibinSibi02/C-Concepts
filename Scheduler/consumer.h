@@ -1,6 +1,4 @@
-/*BIBIN SIBI
- * CS480
- * RED ID: 825763777 */
+/*BIBIN  */
 
 #ifndef PA4_CONSUMER_H
 #define PA4_CONSUMER_H
