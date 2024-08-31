@@ -1,6 +1,4 @@
-/*BIBIN SIBI
- * CS480
- * RED ID: 825763777 */
+/*BIBIN*/
 
 #include <unistd.h>
 #include <pthread.h>
