@@ -1,2 +1,19 @@
 # C-Concepts
-A collection of projects in relation to advanced C++ topics.
+A collection of projects in relation to advanced C++ topics. </br>
+Below I will give a quick summary of each project.
+-   PS: All these labs make use of argc and argv along with the getopt commands to process command line arguments and it's corresponding error handling.
+-   These labs also output runtime.
+- The substring counter makes use of a Trie Tree data structure, which is created by an empty array the length of valid characters, with index 0 corresponding to the letter A. The process of reading an input full of substrings then does the following: 
+  - every new letter of that input read gets initialized with a new empty array of the length of valid characters. For example, the word "bread" (in this example, bread is used as a substring, but the inputs will likely have values like "a" "aa" and other substrings) would have the letter b at depth 0 (root) and the letter d at depth 4 (leaf). Adding the input "brat" would then follow down the existing b node at depth 0 (root), the existing r node at depth 1, and upon finding no entry for node a at depth 2, will create a new array at that position and then create a new array at depth 3 for node r for the same reason of not finding an existing value at that depth for node r.
+  - whether a certain node exists at that depth is determined by if it is empty, or initialized with an array.
+  - arrays are only created if a letter at that depth is read, saving space by not initializing each value at every depth with a corresponding array.
+  - this also efficiently keeps track of every input without causing repeats, such as the letters b and r from the example above.
+  - after all the inputs full of substrings have been read and the trie tree is constructed, any file can then be read. Any word from the file will be checked to have a corresponding path in the substring trie-tree. If that word contains a substring from the substring tree, it will be counted down.
+  - after processing the whole text, the trie tree will be deallocated and a count of the amount of the substrings (input) found in the text will be displayed
+- The multithreading folder is an updated version of the substring counter, where posix threads are used to simulate multithreading between the different components of the substring counter to increase efficiency. 
+  - the task is seperated into three main components, reading the substring inputs to create the trie tree, reading lines from the text file and adding it into a queue, and removing lines from the queue to count the substrings within that line.
+  - this project implements the concept of waiting, where a certain thread is confined to the productivity of a seperate thread, for example, where the thread removing lines from the queue shouldn't try to remove a line in a scenario where the queue is empty and the reading lines thread is still working on putting a line into the queue.
+  - this project also implements the practice of preventing one thread from accessing shared data (in this case the queue) before another thread is done with it.
+- The Scheduler takes the concept of preventing multiple threads from accessing a shared data structure at the same time, and takes it one step further.
+  - this project seeks to emulate a crypto brokerage, which contains two threads that produce two types of crypto at different speeds, and two threads that consume the two different types of crypto at different speeds. These speeds can all be modified by optional command line inputs.
+  - i do not remember the specifics behind the variation between the 2 differnet crypto currencies, but the buffer which acts as the communication between these 4 threads are created in the form of a queue, which is protected and passed around through the use of posix locks, with the goal of the lab to be to prevent any deadlocks regardless of the speed of the producer and consumer threads, and the specifications of the individual two cryptos (all of which can be modified through optional command line inputs). 
